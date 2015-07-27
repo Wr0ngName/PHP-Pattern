@@ -27,7 +27,7 @@
 	$length = (isset($_GET['length']) && intval($_GET['length'])>0)?intval($_GET['length']):500;
 
 	// To run a search, we store the original length, and we generate a full sequence
-	if(!empty($_GET['search']) && strlen($_GET['search'])>2)
+	if(!empty($_GET['search']) && strlen($_GET['search'])>2 && strlen($_GET['search'])<=100)
 	{
 		$oldLength = $length;
 		$length = $maxLength;
@@ -140,7 +140,7 @@
 		<form method="GET">
 			<label for="search">Sequence part:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="hidden" name="length" value="<?php echo $length; ?>" />
-			<input type="text" placeholder="sequence part" name="search" maxlength="10" value="<?php echo (isset($search)?$search:''); ?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" placeholder="sequence part" name="search" maxlength="100" value="<?php echo (isset($search)?$search:''); ?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="submit" value="Get index" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<?php echo (isset($offset)?'<span style="color:green;">Substring index: '.$offset.'</span>':''); ?>
 		</form>
